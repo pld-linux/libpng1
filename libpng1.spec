@@ -15,6 +15,9 @@ Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
