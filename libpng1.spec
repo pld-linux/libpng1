@@ -3,7 +3,7 @@
 Summary:	PNG library
 Summary(de):	PNG-Library
 Summary(fr):	Librarie PNG
-Summary(pl):	Biblioteka PNG 
+Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
 Version:	1.0.12
@@ -16,7 +16,7 @@ Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-badchunks.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
-BuildRoot:	%{tmpdir}/%{_oldname}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The PNG library is a collection of routines used to create and
@@ -45,8 +45,8 @@ yordamlarý içerir. PNG, GIF formatýnýn yerini almak üzere tasarlanmýþ
 bir resim formatýdýr.
 
 %package devel
-Summary:	headers 
-Summary(de):	Headers und statische Libraries 
+Summary:	headers
+Summary(de):	Headers und statische Libraries
 Summary(fr):	en-têtes et bibliothèques statiques
 Summary(pl):	Pliki nag³ówkowe
 Summary(tr):	baþlýk dosyalarý ve statik kitaplýklar
@@ -59,19 +59,19 @@ Requires:	zlib-devel
 The header files and static libraries are only needed for development
 of programs using the PNG library.
 
-%description -l pl devel
+%description devel -l pl
 W pakiecie tym znajduj± siê pliki nag³ówkowe, przeznaczone dla
 programistów u¿ywaj±cych bibliotek PNG.
 
-%description -l de devel
+%description devel -l de
 Die Header-Dateien und statischen Libraries werden nur zur Entwicklung
 von Programmen mit der PNG-Library benötigt.
 
-%description -l fr devel
+%description devel -l fr
 Fichiers d'en-tete et les librairies qui sont requis seulement pour le
 développement avec la librairie PNG.
 
-%description -l tr devel
+%description devel -l tr
 PNG kitaplýðýný kullanan programlar geliþtirmek için gereken
 kitaplýklar ve baþlýk dosyalarý.
 
@@ -85,7 +85,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static libraries.
 
-%description -l pl static
+%description static -l pl
 Biblioteki statyczne.
 
 %package progs
@@ -96,7 +96,7 @@ Group:		Applications/Graphics
 This package contains utility programs to convert png files to and
 from pnm files.
 
-%description -l pl progs
+%description progs -l pl
 Narzêdzia do konwersji plików png z lub do plików pnm.
 
 %prep
