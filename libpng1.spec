@@ -56,7 +56,7 @@ Summary(fr):	En-têtes et bibliothèques statiques
 Summary(pl):	Pliki nag³ówkowe libpng
 Summary(tr):	Baþlýk dosyalarý ve statik kitaplýklar
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Requires:	zlib-devel
 Provides:	libpng-devel = %{version}
 Conflicts:	libpng-devel >= 1.2.0
@@ -85,7 +85,7 @@ kitaplýklar ve baþlýk dosyalarý.
 Summary:	Static libpng libraries
 Summary(pl):	Biblioteki statyczne libpng
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 Provides:	libpng-static = %{version}
 Conflicts:	libpng-static >= 1.2.0
 
@@ -99,7 +99,7 @@ Biblioteki statyczne.
 Summary:	libpng utility programs
 Summary(pl):	Programy u¿ytkowe libpng
 Group:		Applications/Graphics
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Provides:	libpng-progs = %{version}
 Conflicts:	libpng-progs >= 1.2.0
 
