@@ -1,5 +1,3 @@
-%define		_oldname	libpng
-
 Summary:	PNG library
 Summary(de):	PNG-Library
 Summary(fr):	Librarie PNG
@@ -7,11 +5,11 @@ Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
 Version:	1.0.15
-Release:	4
+Release:	5
 Epoch:		2
 License:	distributable
 Group:		Libraries
-Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.bz2
+Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/libpng-%{version}.tar.bz2
 # Source0-md5:	69569534bd0d6a9443189ba56cd89ef3
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
@@ -20,10 +18,15 @@ Patch3:		%{name}-SONAME.patch
 Patch4:		%{name}-16bit-overflow.patch
 Patch5:		%{name}-pngerror.patch
 Patch6:		%{name}-libdirfix.patch
+Patch7:		%{name}-security.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 BuildRequires:	zlib-devel
 Provides:	libpng = %{version}
+%ifarch amd64 ia64 ppc64 s390x sparc64
+Provides:	libpng10.so.0()(64bit)
+%else
 Provides:	libpng10.so.0
+%endif
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -114,7 +117,7 @@ from pnm files.
 Narzêdzia do konwersji plików png z lub do plików pnm.
 
 %prep
-%setup -q -n %{_oldname}-%{version}
+%setup -q -n libpng-%{version}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -122,6 +125,7 @@ Narzêdzia do konwersji plików png z lub do plików pnm.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 ln -s scripts/makefile.linux ./Makefile
 
