@@ -49,9 +49,9 @@ bir resim formatýdýr.
 %package devel
 Summary:	libpng header files
 Summary(de):	Headers und statische Libraries
-Summary(fr):	en-têtes et bibliothèques statiques
-Summary(pl):	Pliki nag³ówkowe
-Summary(tr):	baþlýk dosyalarý ve statik kitaplýklar
+Summary(fr):	En-têtes et bibliothèques statiques
+Summary(pl):	Pliki nag³ówkowe libpng
+Summary(tr):	Baþlýk dosyalarý ve statik kitaplýklar
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	zlib-devel
@@ -79,8 +79,8 @@ PNG kitaplýðýný kullanan programlar geliþtirmek için gereken
 kitaplýklar ve baþlýk dosyalarý.
 
 %package static
-Summary:	static libraries
-Summary(pl):	Biblioteki statyczne
+Summary:	Static libpng libraries
+Summary(pl):	Biblioteki statyczne libpng
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 Provides:	libpng-static = %{version}
@@ -94,6 +94,7 @@ Biblioteki statyczne.
 
 %package progs
 Summary:	libpng utility programs
+Summary(pl):	Programy u¿ytkowe libpng
 Group:		Applications/Graphics
 Requires:	%{name} = %{version}
 Provides:	libpng-progs = %{version}
