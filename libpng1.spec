@@ -7,7 +7,7 @@ Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
 Version:	1.0.15
-Release:	3
+Release:	4
 Epoch:		2
 License:	distributable
 Group:		Libraries
@@ -19,6 +19,7 @@ Patch2:		%{name}-badchunks.patch
 Patch3:		%{name}-SONAME.patch
 Patch4:		%{name}-16bit-overflow.patch
 Patch5:		%{name}-pngerror.patch
+Patch6:		%{name}-libdirfix.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 BuildRequires:	zlib-devel
 Provides:	libpng = %{version}
@@ -120,15 +121,20 @@ Narzêdzia do konwersji plików png z lub do plików pnm.
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 ln -s scripts/makefile.linux ./Makefile
 
 %build
 %{__make} \
-	OPT_FLAGS="%{rpmcflags}" \
-	prefix=%{_prefix}
+	prefix=%{_prefix} \
+	LIBPATH=%{_libdir} \
+	CC="%{__cc}" \
+	OPT_FLAGS="%{rpmcflags}"
 
 %{__make} -C contrib/pngminus -f makefile.std \
+	LIBPATH=%{_libdir} \
+	CC="%{__cc}" \
 	OPT_FLAGS="%{rpmcflags} -I../.."
 
 %install
@@ -138,6 +144,7 @@ install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man{3,5}}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	prefix=%{_prefix} \
+	LIBPATH=%{_libdir} \
 	MANPATH=%{_mandir}
 
 install contrib/pngminus/{png2pnm,pnm2png} $RPM_BUILD_ROOT%{_bindir}
