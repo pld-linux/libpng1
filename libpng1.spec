@@ -47,7 +47,7 @@ extensions.
 
 %description -l pl
 Biblioteka PNG to zestaw funkcji u¿ywanych do tworzenia i obróbki
-plików w formatacie graficznym PNG. Format ten zosta³ stworzony jako
+plików w formacie graficznym PNG. Format ten zosta³ stworzony jako
 zamiennik dla formatu GIF, z wieloma ulepszeniami i rozszerzeniami.
 
 %description -l tr
