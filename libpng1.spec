@@ -19,6 +19,7 @@ Patch2:		%{name}-badchunks.patch
 Patch3:		%{name}-SONAME.patch
 Patch4:		%{name}-16bit-overflow.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
+BuildRequires:	zlib-devel
 Provides:	libpng = %{version}
 Provides:	libpng10.so.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
