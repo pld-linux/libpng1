@@ -7,7 +7,7 @@ Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
 Version:	1.0.15
-Release:	1
+Release:	2
 Epoch:		2
 License:	distributable
 Group:		Libraries
@@ -18,6 +18,7 @@ Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-badchunks.patch
 Patch3:		%{name}-SONAME.patch
 Patch4:		%{name}-16bit-overflow.patch
+Patch5:		%{name}-pngerror.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 BuildRequires:	zlib-devel
 Provides:	libpng = %{version}
@@ -57,7 +58,7 @@ Summary(fr):	En-têtes et bibliothèques statiques
 Summary(pl):	Pliki nag³ówkowe libpng
 Summary(tr):	Baþlýk dosyalarý ve statik kitaplýklar
 Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	zlib-devel
 Provides:	libpng-devel = %{version}
 Conflicts:	libpng-devel >= 1.2.0
@@ -86,7 +87,7 @@ kitaplýklar ve baþlýk dosyalarý.
 Summary:	Static libpng libraries
 Summary(pl):	Biblioteki statyczne libpng
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Provides:	libpng-static = %{version}
 Conflicts:	libpng-static >= 1.2.0
 
@@ -100,7 +101,7 @@ Biblioteki statyczne.
 Summary:	libpng utility programs
 Summary(pl):	Programy u¿ytkowe libpng
 Group:		Applications/Graphics
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	libpng-progs = %{version}
 Conflicts:	libpng-progs >= 1.2.0
 
@@ -118,6 +119,7 @@ Narzêdzia do konwersji plików png z lub do plików pnm.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 ln -s scripts/makefile.linux ./Makefile
 
@@ -127,7 +129,7 @@ ln -s scripts/makefile.linux ./Makefile
 	prefix=%{_prefix}
 
 %{__make} -C contrib/pngminus -f makefile.std \
-	OPT_FLAGS="%{rpmcflags} -I../../"
+	OPT_FLAGS="%{rpmcflags} -I../.."
 
 %install
 rm -rf $RPM_BUILD_ROOT
