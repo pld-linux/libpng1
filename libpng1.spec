@@ -6,18 +6,20 @@ Summary(fr):	Librarie PNG
 Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
-Version:	1.0.14
+Version:	1.0.15
 Release:	1
 Epoch:		2
 License:	distributable
 Group:		Libraries
-Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.gz
+Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.bz2
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-badchunks.patch
 Patch3:		%{name}-SONAME.patch
+Patch4:		%{name}-16bit-overflow.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 Provides:	libpng = %{version}
+Provides:	libpng10.so.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -113,6 +115,7 @@ Narzêdzia do konwersji plików png z lub do plików pnm.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 ln -s scripts/makefile.linux ./Makefile
 
@@ -144,17 +147,16 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ANNOUNCE CHANGES KNOWNBUG README
-%attr(755,root,root) %{_libdir}/*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libpng10.so.?
 
 %files devel
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/libpng*-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
+%{_pkgconfigdir}/libpng*.pc
 %{_mandir}/man?/*
-# not included, because needs changes (because of SONAME patch)
-# but not needed, because libpng1 is for compatibility only
-#%attr(755,root,root) %{_bindir}/libpng-config
-#%{_pkgconfigdir}/libpng.pc
 
 %files static
 %defattr(644,root,root,755)
