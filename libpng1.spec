@@ -9,7 +9,7 @@ Name:		libpng1
 Version:	1.0.12
 Release:	1
 Epoch:		2
-License:	Distributable
+License:	distributable
 Group:		Libraries
 Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
