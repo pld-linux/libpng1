@@ -6,7 +6,7 @@ Summary(fr):	Librarie PNG
 Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
-Version:	1.0.12
+Version:	1.0.14
 Release:	1
 Epoch:		2
 License:	distributable
@@ -15,18 +15,15 @@ Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-badchunks.patch
+Patch3:		%{name}-SONAME.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
+Provides:	libpng = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The PNG library is a collection of routines used to create and
 manipulate PNG format graphics files. The PNG format was designed as a
 replacement for GIF, with many improvements and extensions.
-
-%description -l pl
-Biblioteki PNG s± kolekcj± form u¿ywanych do tworzenia i manipulowania
-plikami w formatacie graficznym PNG. Format ten zosta³ stworzony jako
-zamiennik dla formatu GIF, z wieloma rozszerzeniami i nowo¶ciami.
 
 %description -l de
 Die PNG-Library ist eine Sammlung von Routinen zum Erstellen und
@@ -39,29 +36,31 @@ manipuler des fichiers graphiques au format PNG. Le format PNG a été
 élaboré pour remplacer le GIF, avec de nombreuses améliorations et
 extensions.
 
+%description -l pl
+Biblioteka PNG to zestaw funkcji u¿ywanych do tworzenia i obróbki
+plików w formatacie graficznym PNG. Format ten zosta³ stworzony jako
+zamiennik dla formatu GIF, z wieloma ulepszeniami i rozszerzeniami.
+
 %description -l tr
 PNG kitaplýðý, PNG formatýndaki resim dosyalarýný iþlemeye yönelik
 yordamlarý içerir. PNG, GIF formatýnýn yerini almak üzere tasarlanmýþ
 bir resim formatýdýr.
 
 %package devel
-Summary:	headers
+Summary:	libpng header files
 Summary(de):	Headers und statische Libraries
 Summary(fr):	en-têtes et bibliothèques statiques
 Summary(pl):	Pliki nag³ówkowe
 Summary(tr):	baþlýk dosyalarý ve statik kitaplýklar
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Conflicts:	%{_oldname}-devel
 Requires:	zlib-devel
+Provides:	libpng-devel = %{version}
+Conflicts:	libpng-devel >= 1.2.0
 
 %description devel
 The header files and static libraries are only needed for development
 of programs using the PNG library.
-
-%description devel -l pl
-W pakiecie tym znajduj± siê pliki nag³ówkowe, przeznaczone dla
-programistów u¿ywaj±cych bibliotek PNG.
 
 %description devel -l de
 Die Header-Dateien und statischen Libraries werden nur zur Entwicklung
@@ -71,6 +70,10 @@ von Programmen mit der PNG-Library benötigt.
 Fichiers d'en-tete et les librairies qui sont requis seulement pour le
 développement avec la librairie PNG.
 
+%description devel -l pl
+W pakiecie tym znajduj± siê pliki nag³ówkowe, przeznaczone dla
+programistów u¿ywaj±cych biblioteki PNG.
+
 %description devel -l tr
 PNG kitaplýðýný kullanan programlar geliþtirmek için gereken
 kitaplýklar ve baþlýk dosyalarý.
@@ -79,8 +82,9 @@ kitaplýklar ve baþlýk dosyalarý.
 Summary:	static libraries
 Summary(pl):	Biblioteki statyczne
 Group:		Development/Libraries
-Conflicts:	%{_oldname}-static
 Requires:	%{name}-devel = %{version}
+Provides:	libpng-static = %{version}
+Conflicts:	libpng-static >= 1.2.0
 
 %description static
 Static libraries.
@@ -91,6 +95,9 @@ Biblioteki statyczne.
 %package progs
 Summary:	libpng utility programs
 Group:		Applications/Graphics
+Requires:	%{name} = %{version}
+Provides:	libpng-progs = %{version}
+Conflicts:	libpng-progs >= 1.2.0
 
 %description progs
 This package contains utility programs to convert png files to and
@@ -104,43 +111,49 @@ Narzêdzia do konwersji plików png z lub do plików pnm.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 ln -s scripts/makefile.linux ./Makefile
 
 %build
-%{__make} OPT_FLAGS="%{rpmcflags}"
-cd contrib/pngminus
-%{__make} -f makefile.std \
+%{__make} \
+	OPT_FLAGS="%{rpmcflags}" \
+	prefix=%{_prefix}
+
+%{__make} -C contrib/pngminus -f makefile.std \
 	OPT_FLAGS="%{rpmcflags} -I../../"
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_bindir},%{_libdir},%{_mandir}/man{3,5}}
+install -d $RPM_BUILD_ROOT{%{_bindir},%{_mandir}/man{3,5}}
 
-%{__make} prefix=$RPM_BUILD_ROOT%{_prefix} install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	prefix=%{_prefix} \
+	MANPATH=%{_mandir}
 
-install png.5 $RPM_BUILD_ROOT%{_mandir}/man5/
-install {libpngpf,libpng}.3 $RPM_BUILD_ROOT%{_mandir}/man3/
 install contrib/pngminus/{png2pnm,pnm2png} $RPM_BUILD_ROOT%{_bindir}
-
-gzip -9nf *.txt ANNOUNCE CHANGES KNOWNBUG README
-
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
+%doc ANNOUNCE CHANGES KNOWNBUG README
 %attr(755,root,root) %{_libdir}/*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_includedir}/*
 %{_mandir}/man?/*
+# not included, because needs changes (because of SONAME patch)
+# but not needed, because libpng1 is for compatibility only
+#%attr(755,root,root) %{_bindir}/libpng-config
+#%{_pkgconfigdir}/libpng.pc
 
 %files static
 %defattr(644,root,root,755)
@@ -148,4 +161,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files progs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/pn*
