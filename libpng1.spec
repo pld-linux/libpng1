@@ -59,8 +59,12 @@ Summary(pl):	Pliki nagЁСwkowe
 Summary(tr):	baЧlЩk dosyalarЩ ve statik kitaplЩklar
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Conflicts:	%{_oldname}-devel
 Requires:	zlib-devel
@@ -90,8 +94,12 @@ Summary:	static libraries
 Summary(pl):	Biblioteki statyczne
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Conflicts:	%{_oldname}-static
 Requires:	%{name}-devel = %{version}
 
