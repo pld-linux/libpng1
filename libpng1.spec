@@ -11,13 +11,6 @@ Release:	1
 Epoch:		2
 License:	Distributable
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	ftp://swrinde.nde.swri.edu/pub/png/src/%{_oldname}-%{version}.tar.gz
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
@@ -58,13 +51,6 @@ Summary(fr):	en-tЙtes et bibliothХques statiques
 Summary(pl):	Pliki nagЁСwkowe
 Summary(tr):	baЧlЩk dosyalarЩ ve statik kitaplЩklar
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Conflicts:	%{_oldname}-devel
 Requires:	zlib-devel
@@ -93,13 +79,6 @@ kitaplЩklar ve baЧlЩk dosyalarЩ.
 Summary:	static libraries
 Summary(pl):	Biblioteki statyczne
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Conflicts:	%{_oldname}-static
 Requires:	%{name}-devel = %{version}
 
@@ -112,8 +91,6 @@ Biblioteki statyczne.
 %package progs
 Summary:	libpng utility programs
 Group:		Applications/Graphics
-Group(de):	Applikationen/Grafik
-Group(pl):	Aplikacje/Grafika
 
 %description progs
 This package contains utility programs to convert png files to and
