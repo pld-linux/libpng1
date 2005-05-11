@@ -17,9 +17,10 @@ Patch2:		%{name}-badchunks.patch
 Patch3:		%{name}-SONAME.patch
 Patch4:		%{name}-libdirfix.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	zlib-devel
 Provides:	libpng = %{version}
-%ifarch amd64 ia64 ppc64 s390x sparc64
+%ifarch %{x8664} ia64 ppc64 s390x sparc64
 Provides:	libpng10.so.0()(64bit)
 %else
 Provides:	libpng10.so.0
