@@ -13,9 +13,8 @@ Source0:	http://dl.sourceforge.net/libpng/libpng-%{version}.tar.bz2
 # Source0-md5:	7c2fb566d3e5e70c8a5eeb719e67f26b
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
-Patch2:		%{name}-badchunks.patch
-Patch3:		%{name}-SONAME.patch
-Patch4:		%{name}-libdirfix.patch
+Patch2:		%{name}-SONAME.patch
+Patch3:		%{name}-libdirfix.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	zlib-devel
@@ -120,7 +119,6 @@ Narzêdzia do konwersji plików png z lub do plików pnm.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 ln -s scripts/makefile.linux ./Makefile
 
