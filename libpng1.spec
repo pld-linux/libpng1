@@ -4,13 +4,13 @@ Summary(fr):	Librarie PNG
 Summary(pl):	Biblioteka PNG
 Summary(tr):	PNG kitaplýðý
 Name:		libpng1
-Version:	1.0.20
+Version:	1.0.21
 Release:	1
 Epoch:		2
 License:	distributable
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libpng/libpng-%{version}.tar.bz2
-# Source0-md5:	7c2fb566d3e5e70c8a5eeb719e67f26b
+# Source0-md5:	17cca7846f8019acfb8fc1868ea99d2e
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-SONAME.patch
