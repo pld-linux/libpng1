@@ -1,5 +1,5 @@
---- libpng-1.0.20/scripts/makefile.linux.orig	2006-07-21 10:38:38.364440000 +0200
-+++ libpng-1.0.20/scripts/makefile.linux	2006-07-21 10:46:22.724440000 +0200
+--- libpng-1.0.21/scripts/makefile.linux.orig	2006-07-21 10:38:38.364440000 +0200
++++ libpng-1.0.21/scripts/makefile.linux	2006-07-21 10:46:22.724440000 +0200
 @@ -4,8 +4,8 @@
  # For conditions of distribution and use, see copyright notice in png.h
  
@@ -8,7 +8,7 @@
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.20
+ PNGMIN = 1.0.21
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
 @@ -50,7 +50,7 @@
