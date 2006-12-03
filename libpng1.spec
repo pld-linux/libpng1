@@ -127,7 +127,11 @@ ln -s scripts/makefile.linux ./Makefile
 	prefix=%{_prefix} \
 	LIBPATH=%{_libdir} \
 	CC="%{__cc}" \
+%ifarch %{x8664}
+	OPT_FLAGS="%{rpmcflags} -DPNG_NO_MMX_CODE"
+%else
 	OPT_FLAGS="%{rpmcflags}"
+%endif
 
 %{__make} -C contrib/pngminus -f makefile.std \
 	LIBPATH=%{_libdir} \
