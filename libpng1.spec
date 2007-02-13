@@ -1,8 +1,8 @@
 Summary:	PNG library
-Summary(de.UTF-8):   PNG-Library
-Summary(fr.UTF-8):   Librarie PNG
-Summary(pl.UTF-8):   Biblioteka PNG
-Summary(tr.UTF-8):   PNG kitaplığı
+Summary(de.UTF-8):	PNG-Library
+Summary(fr.UTF-8):	Librarie PNG
+Summary(pl.UTF-8):	Biblioteka PNG
+Summary(tr.UTF-8):	PNG kitaplığı
 Name:		libpng1
 Version:	1.0.23
 Release:	1
@@ -54,10 +54,10 @@ bir resim formatıdır.
 
 %package devel
 Summary:	libpng header files
-Summary(de.UTF-8):   Headers und statische Libraries
-Summary(fr.UTF-8):   En-têtes et bibliothèques statiques
-Summary(pl.UTF-8):   Pliki nagłówkowe libpng
-Summary(tr.UTF-8):   Başlık dosyaları ve statik kitaplıklar
+Summary(de.UTF-8):	Headers und statische Libraries
+Summary(fr.UTF-8):	En-têtes et bibliothèques statiques
+Summary(pl.UTF-8):	Pliki nagłówkowe libpng
+Summary(tr.UTF-8):	Başlık dosyaları ve statik kitaplıklar
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	zlib-devel
@@ -86,7 +86,7 @@ kitaplıklar ve başlık dosyaları.
 
 %package static
 Summary:	Static libpng libraries
-Summary(pl.UTF-8):   Biblioteki statyczne libpng
+Summary(pl.UTF-8):	Biblioteki statyczne libpng
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 Provides:	libpng-static = %{version}
@@ -100,7 +100,7 @@ Biblioteki statyczne.
 
 %package progs
 Summary:	libpng utility programs
-Summary(pl.UTF-8):   Programy użytkowe libpng
+Summary(pl.UTF-8):	Programy użytkowe libpng
 Group:		Applications/Graphics
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Provides:	libpng-progs = %{version}
