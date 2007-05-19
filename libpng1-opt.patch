@@ -1,16 +1,5 @@
 --- libpng-1.0.14/scripts/makefile.gcmmx.orig	Mon Jul  8 02:48:02 2002
 +++ libpng-1.0.14/scripts/makefile.gcmmx	Thu Jul 18 19:59:47 2002
-@@ -28,8 +28,8 @@
- # Where the zlib library and include files are located.
- #ZLIBLIB=/usr/local/lib
- #ZLIBINC=/usr/local/include
--ZLIBLIB=../zlib
--ZLIBINC=../zlib
-+ZLIBLIB=/usr/lib
-+ZLIBINC=
- 
- ALIGN=
- # for i386:
 @@ -44,8 +44,8 @@
  # Remove -DPNG_THREAD_UNSAFE_OK if you need thread safety
  ### for generic gcc:
