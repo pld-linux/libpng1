@@ -1,0 +1,103 @@
+--- libpng-1.0.26/pnggccrd.c.orig	2007-05-16 01:50:51.000000000 +0200
++++ libpng-1.0.26/pnggccrd.c	2007-05-19 12:45:12.127978584 +0200
+@@ -311,72 +311,47 @@
+ static int _unmask;
+ #endif
+ 
+-const static unsigned long long _mask8_0  = 0x0102040810204080LL;
++const static unsigned long long _mask8_0  __attribute__((used)) = 0x0102040810204080LL;
+ 
+-const static unsigned long long _mask16_1 = 0x0101020204040808LL;
+-const static unsigned long long _mask16_0 = 0x1010202040408080LL;
++const static unsigned long long _mask16_1 __attribute__((used)) = 0x0101020204040808LL;
++const static unsigned long long _mask16_0 __attribute__((used)) = 0x1010202040408080LL;
+ 
+-const static unsigned long long _mask24_2 = 0x0101010202020404LL;
+-const static unsigned long long _mask24_1 = 0x0408080810101020LL;
+-const static unsigned long long _mask24_0 = 0x2020404040808080LL;
+-
+-const static unsigned long long _mask32_3 = 0x0101010102020202LL;
+-const static unsigned long long _mask32_2 = 0x0404040408080808LL;
+-const static unsigned long long _mask32_1 = 0x1010101020202020LL;
+-const static unsigned long long _mask32_0 = 0x4040404080808080LL;
+-
+-const static unsigned long long _mask48_5 = 0x0101010101010202LL;
+-const static unsigned long long _mask48_4 = 0x0202020204040404LL;
+-const static unsigned long long _mask48_3 = 0x0404080808080808LL;
+-const static unsigned long long _mask48_2 = 0x1010101010102020LL;
+-const static unsigned long long _mask48_1 = 0x2020202040404040LL;
+-const static unsigned long long _mask48_0 = 0x4040808080808080LL;
+-
+-const static unsigned long long _const4   = 0x0000000000FFFFFFLL;
+-//const static unsigned long long _const5 = 0x000000FFFFFF0000LL;     // NOT USED
+-const static unsigned long long _const6   = 0x00000000000000FFLL;
++const static unsigned long long _mask24_2 __attribute__((used)) = 0x0101010202020404LL;
++const static unsigned long long _mask24_1 __attribute__((used)) = 0x0408080810101020LL;
++const static unsigned long long _mask24_0 __attribute__((used)) = 0x2020404040808080LL;
++
++const static unsigned long long _mask32_3 __attribute__((used)) = 0x0101010102020202LL;
++const static unsigned long long _mask32_2 __attribute__((used)) = 0x0404040408080808LL;
++const static unsigned long long _mask32_1 __attribute__((used)) = 0x1010101020202020LL;
++const static unsigned long long _mask32_0 __attribute__((used)) = 0x4040404080808080LL;
++
++const static unsigned long long _mask48_5 __attribute__((used)) = 0x0101010101010202LL;
++const static unsigned long long _mask48_4 __attribute__((used)) = 0x0202020204040404LL;
++const static unsigned long long _mask48_3 __attribute__((used)) = 0x0404080808080808LL;
++const static unsigned long long _mask48_2 __attribute__((used)) = 0x1010101010102020LL;
++const static unsigned long long _mask48_1 __attribute__((used)) = 0x2020202040404040LL;
++const static unsigned long long _mask48_0 __attribute__((used)) = 0x4040808080808080LL;
++
++const static unsigned long long _const4   __attribute__((used)) = 0x0000000000FFFFFFLL;
++//const static unsigned long long _const5 __attribute__((used)) = 0x000000FFFFFF0000LL;     // NOT USED
++const static unsigned long long _const6   __attribute__((used)) = 0x00000000000000FFLL;
+ 
+ // These are used in the row-filter routines and should/would be local
+ //  variables if not for gcc addressing limitations.
+ // WARNING: Their presence probably defeats the thread safety of libpng.
+ 
+ #ifdef PNG_THREAD_UNSAFE_OK
+-static png_uint_32  _FullLength;
+-static png_uint_32  _MMXLength;
+-static int          _dif;
+-static int          _patemp; // temp variables for Paeth routine
+-static int          _pbtemp;
+-static int          _pctemp;
++static png_uint_32  _FullLength __attribute__((used));
++static png_uint_32  _MMXLength __attribute__((used));
++static int          _dif __attribute__((used));
++static int          _patemp __attribute__((used)); // temp variables for Paeth routine
++static int          _pbtemp __attribute__((used));
++static int          _pctemp __attribute__((used));
+ #endif
+ 
+ void /* PRIVATE */
+ png_squelch_warnings(void)
+ {
+-#ifdef PNG_THREAD_UNSAFE_OK
+-   _dif = _dif;
+-   _patemp = _patemp;
+-   _pbtemp = _pbtemp;
+-   _pctemp = _pctemp;
+-   _MMXLength = _MMXLength;
+-#endif
+-   _const4  = _const4;
+-   _const6  = _const6;
+-   _mask8_0  = _mask8_0;
+-   _mask16_1 = _mask16_1;
+-   _mask16_0 = _mask16_0;
+-   _mask24_2 = _mask24_2;
+-   _mask24_1 = _mask24_1;
+-   _mask24_0 = _mask24_0;
+-   _mask32_3 = _mask32_3;
+-   _mask32_2 = _mask32_2;
+-   _mask32_1 = _mask32_1;
+-   _mask32_0 = _mask32_0;
+-   _mask48_5 = _mask48_5;
+-   _mask48_4 = _mask48_4;
+-   _mask48_3 = _mask48_3;
+-   _mask48_2 = _mask48_2;
+-   _mask48_1 = _mask48_1;
+-   _mask48_0 = _mask48_0;
+ }
+ #endif /* PNG_MMX_CODE_SUPPORTED */
+ 
