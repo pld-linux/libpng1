@@ -4,18 +4,16 @@ Summary(fr.UTF-8):	Librarie PNG
 Summary(pl.UTF-8):	Biblioteka PNG
 Summary(tr.UTF-8):	PNG kitaplığı
 Name:		libpng1
-Version:	1.0.26
+Version:	1.0.31
 Release:	1
 Epoch:		2
 License:	distributable
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/libpng/libpng-%{version}.tar.bz2
-# Source0-md5:	fa7b89dc93bd1ec7a39d9e74a2223be7
+# Source0-md5:	de77acd48b5e288fbc58cd82628367cc
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-SONAME.patch
-Patch3:		%{name}-libdirfix.patch
-Patch4:		%{name}-const.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRequires:	zlib-devel
@@ -119,8 +117,6 @@ Narzędzia do konwersji plików png z lub do plików pnm.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
-%patch4 -p1
 
 %ifarch %{ix86}
 ln -s scripts/makefile.gcmmx ./Makefile
@@ -165,21 +161,31 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc ANNOUNCE CHANGES KNOWNBUG README
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/libpng10.so.?
+%attr(755,root,root) %{_libdir}/libpng.so.*.*
+%attr(755,root,root) %ghost %{_libdir}/libpng.so.2
+%attr(755,root,root) %{_libdir}/libpng10.so.*.*
+%attr(755,root,root) %{_libdir}/libpng10.so.0
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/libpng*-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_includedir}/*
-%{_pkgconfigdir}/libpng*.pc
-%{_mandir}/man?/*
+%attr(755,root,root) %{_bindir}/libpng-config
+%attr(755,root,root) %{_bindir}/libpng10-config
+%attr(755,root,root) %{_libdir}/libpng.so
+%attr(755,root,root) %{_libdir}/libpng10.so
+%{_includedir}/libpng
+%{_includedir}/libpng10
+%{_includedir}/png*.h
+%{_pkgconfigdir}/libpng.pc
+%{_pkgconfigdir}/libpng10.pc
+%{_mandir}/man3/libpng*.3*
+%{_mandir}/man5/png.5*
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libpng.a
+%{_libdir}/libpng10.a
 
 %files progs
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/pn*
+%attr(755,root,root) %{_bindir}/png2pnm
+%attr(755,root,root) %{_bindir}/pnm2png
