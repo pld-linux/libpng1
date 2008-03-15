@@ -1,5 +1,5 @@
---- libpng-1.0.26/scripts/makefile.linux.orig	2007-04-08 13:54:37.348265617 +0200
-+++ libpng-1.0.26/scripts/makefile.linux	2007-04-08 13:57:05.259531415 +0200
+--- libpng-1.0.31/scripts/makefile.linux.orig	2008-03-15 15:25:16.211287745 +0100
++++ libpng-1.0.31/scripts/makefile.linux	2008-03-15 15:26:07.390401066 +0100
 @@ -4,8 +4,8 @@
  # For conditions of distribution and use, see copyright notice in png.h
  
@@ -8,19 +8,19 @@
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.26
+ PNGMIN = 1.0.31
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
 @@ -50,7 +50,7 @@
- CFLAGS= $(OPT_FLAGS) -Wall -funroll-loops \
- 	$(ALIGN) # $(WARNMORE) -DPNG_DEBUG=5
+ CFLAGS=-I$(ZLIBINC) -Wall $(OPT_FLAGS) -funroll-loops -DPNG_NO_MMX_CODE \
+ 	$(ALIGN) # $(WARNMORE) -g -DPNG_DEBUG=5
  
 -LDFLAGS=-L. -Wl,-rpath,. -L$(ZLIBLIB) -Wl,-rpath,$(ZLIBLIB) -lpng10 -lz -lm
 +LDFLAGS=-L. -lpng -lz -lm
  LDFLAGS_A=-L$(ZLIBLIB) -Wl,-rpath,$(ZLIBLIB) libpng.a -lz -lm
  
  INCPATH=$(prefix)/include
-@@ -110,12 +110,16 @@
+@@ -114,12 +114,16 @@
  	$(LN_SF) $(LIBSOVER) $(LIBSOMAJ)
  
  $(LIBSOVER): $(OBJSDLL)
@@ -39,7 +39,7 @@
  
  pngtest: pngtest.o $(LIBSO)
  	$(CC) -o pngtest $(CFLAGS) pngtest.o $(LDFLAGS)
-@@ -135,43 +139,42 @@
+@@ -139,43 +143,42 @@
  
  install-headers: png.h pngconf.h
  	-@if [ ! -d $(DI) ]; then $(MKDIR_P) $(DI); fi
@@ -98,7 +98,7 @@
  
  install-man: libpng.3 libpngpf.3 png.5
  	-@if [ ! -d $(DM) ]; then $(MKDIR_P) $(DM); fi
-@@ -186,11 +189,11 @@
+@@ -190,11 +193,11 @@
  
  install-config: libpng-config
  	-@if [ ! -d $(DB) ]; then $(MKDIR_P) $(DB); fi
@@ -112,9 +112,9 @@
  
  install: install-static install-shared install-man install-config
  
---- libpng-1.0.26/scripts/makefile.gcmmx.orig	2007-05-19 10:21:21.888169000 +0200
-+++ libpng-1.0.26/scripts/makefile.gcmmx	2007-05-19 10:54:10.808371613 +0200
-@@ -14,8 +14,8 @@
+--- libpng-1.0.31/scripts/makefile.gcmmx.orig	2008-03-15 15:25:16.211287745 +0100
++++ libpng-1.0.31/scripts/makefile.gcmmx	2008-03-15 15:25:55.143148910 +0100
+@@ -12,8 +12,8 @@
  #        the background!  Context switches between MMX and FPU are expensive.
  
  # Library name:
@@ -122,10 +122,10 @@
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.26
+ PNGMIN = 1.0.31
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
-@@ -72,8 +72,8 @@
+@@ -70,8 +70,8 @@
  #	-m486 -malign-double -ffast-math \
  #	$(ALIGN) -funroll-loops -funroll-all-loops -fomit-frame-pointer 
  
@@ -136,7 +136,7 @@
  
  
  INCPATH=$(prefix)/include
-@@ -142,12 +142,16 @@
+@@ -138,12 +138,16 @@
  $(LIBSOVER): $(OBJSDLL)
  	$(CC) -shared -Wl,-soname,$(LIBSOMAJ) \
  	-o $(LIBSOVER) \
@@ -155,7 +155,7 @@
  
  pngtest: pngtest.o $(LIBSO)
  	$(CC) -o pngtest $(CFLAGS) pngtest.o $(LDFLAGS)
-@@ -167,43 +171,42 @@
+@@ -163,43 +167,42 @@
  
  install-headers: png.h pngconf.h
  	-@if [ ! -d $(DI) ]; then $(MKDIR_P) $(DI); fi
@@ -214,7 +214,7 @@
  
  install-man: libpng.3 libpngpf.3 png.5
  	-@if [ ! -d $(DM) ]; then $(MKDIR_P) $(DM); fi
-@@ -218,11 +221,11 @@
+@@ -214,11 +217,11 @@
  
  install-config: libpng-config
  	-@if [ ! -d $(DB) ]; then $(MKDIR_P) $(DB); fi
