@@ -1,22 +1,22 @@
---- libpng-1.0.31/scripts/makefile.gcmmx.orig	2008-02-18 23:29:42.000000000 +0100
-+++ libpng-1.0.31/scripts/makefile.gcmmx	2008-03-15 15:24:19.431906700 +0100
-@@ -58,7 +58,7 @@
+--- libpng-1.0.59/scripts/makefile.gcmmx.orig	2012-03-29 07:00:13.000000000 +0200
++++ libpng-1.0.59/scripts/makefile.gcmmx	2012-04-25 19:24:05.670511980 +0200
+@@ -61,7 +61,7 @@
  
  # Remove -DPNG_THREAD_UNSAFE_OK if you need thread safety
  ### for generic gcc:
--CFLAGS=-DPNG_THREAD_UNSAFE_OK -I$(ZLIBINC) -Wall -O \
-+CFLAGS=-DPNG_THREAD_UNSAFE_OK -I$(ZLIBINC) -Wall $(OPT_FLAGS) \
+-CFLAGS=-DPNG_THREAD_UNSAFE_OK -I$(ZLIBINC) -W -Wall -O \
++CFLAGS=-DPNG_THREAD_UNSAFE_OK -I$(ZLIBINC) -W -Wall $(OPT_FLAGS) \
  	$(ALIGN) -funroll-loops \
  	-fomit-frame-pointer  # $(WARNMORE) -g -DPNG_DEBUG=5
  ### for gcc 2.95.2 on 686:
---- libpng-1.0.31/scripts/makefile.linux.orig	2008-02-18 23:29:42.000000000 +0100
-+++ libpng-1.0.31/scripts/makefile.linux	2008-03-15 15:24:46.896552999 +0100
-@@ -47,7 +47,7 @@
+--- libpng-1.0.59/scripts/makefile.linux.orig	2012-03-29 07:00:13.000000000 +0200
++++ libpng-1.0.59/scripts/makefile.linux	2012-04-25 19:23:47.990512349 +0200
+@@ -51,7 +51,7 @@
  
  # for pgcc version 2.95.1, -O3 is buggy; don't use it.
  
--CFLAGS=-I$(ZLIBINC) -Wall -O3 -funroll-loops -DPNG_NO_MMX_CODE \
-+CFLAGS=-I$(ZLIBINC) -Wall $(OPT_FLAGS) -funroll-loops -DPNG_NO_MMX_CODE \
+-CFLAGS=-I$(ZLIBINC) -W -Wall -O3 -funroll-loops -DPNG_NO_MMX_CODE \
++CFLAGS=-I$(ZLIBINC) -W -Wall $(OPT_FLAGS) -funroll-loops -DPNG_NO_MMX_CODE \
  	$(ALIGN) # $(WARNMORE) -g -DPNG_DEBUG=5
  
  LDFLAGS=-L. -Wl,-rpath,. -L$(ZLIBLIB) -Wl,-rpath,$(ZLIBLIB) -lpng10 -lz -lm

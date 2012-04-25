@@ -1,18 +1,18 @@
---- libpng-1.0.31/scripts/makefile.linux.orig	2008-03-15 15:25:16.211287745 +0100
-+++ libpng-1.0.31/scripts/makefile.linux	2008-03-15 15:26:07.390401066 +0100
-@@ -4,8 +4,8 @@
- # For conditions of distribution and use, see copyright notice in png.h
+--- libpng-1.0.59/scripts/makefile.linux.orig	2012-04-25 19:27:07.640508188 +0200
++++ libpng-1.0.59/scripts/makefile.linux	2012-04-25 19:27:36.627174251 +0200
+@@ -8,8 +8,8 @@
+ # and license in png.h
  
  # Library name:
 -LIBNAME = libpng10
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.31
+ PNGMIN = 1.0.59
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
-@@ -50,7 +50,7 @@
- CFLAGS=-I$(ZLIBINC) -Wall $(OPT_FLAGS) -funroll-loops -DPNG_NO_MMX_CODE \
+@@ -54,7 +54,7 @@
+ CFLAGS=-I$(ZLIBINC) -W -Wall $(OPT_FLAGS) -funroll-loops -DPNG_NO_MMX_CODE \
  	$(ALIGN) # $(WARNMORE) -g -DPNG_DEBUG=5
  
 -LDFLAGS=-L. -Wl,-rpath,. -L$(ZLIBLIB) -Wl,-rpath,$(ZLIBLIB) -lpng10 -lz -lm
@@ -20,7 +20,7 @@
  LDFLAGS_A=-L$(ZLIBLIB) -Wl,-rpath,$(ZLIBLIB) libpng.a -lz -lm
  
  INCPATH=$(prefix)/include
-@@ -114,12 +114,16 @@
+@@ -118,12 +118,16 @@
  	$(LN_SF) $(LIBSOVER) $(LIBSOMAJ)
  
  $(LIBSOVER): $(OBJSDLL)
@@ -39,7 +39,7 @@
  
  pngtest: pngtest.o $(LIBSO)
  	$(CC) -o pngtest $(CFLAGS) pngtest.o $(LDFLAGS)
-@@ -139,43 +143,42 @@
+@@ -143,43 +147,42 @@
  
  install-headers: png.h pngconf.h
  	-@if [ ! -d $(DI) ]; then $(MKDIR_P) $(DI); fi
@@ -98,7 +98,7 @@
  
  install-man: libpng.3 libpngpf.3 png.5
  	-@if [ ! -d $(DM) ]; then $(MKDIR_P) $(DM); fi
-@@ -190,11 +193,11 @@
+@@ -194,11 +197,11 @@
  
  install-config: libpng-config
  	-@if [ ! -d $(DB) ]; then $(MKDIR_P) $(DB); fi
@@ -112,8 +112,8 @@
  
  install: install-static install-shared install-man install-config
  
---- libpng-1.0.31/scripts/makefile.gcmmx.orig	2008-03-15 15:25:16.211287745 +0100
-+++ libpng-1.0.31/scripts/makefile.gcmmx	2008-03-15 15:25:55.143148910 +0100
+--- libpng-1.0.59/scripts/makefile.gcmmx.orig	2008-03-15 15:25:16.211287745 +0100
++++ libpng-1.0.59/scripts/makefile.gcmmx	2008-03-15 15:25:55.143148910 +0100
 @@ -12,8 +12,8 @@
  #        the background!  Context switches between MMX and FPU are expensive.
  
@@ -122,7 +122,7 @@
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.31
+ PNGMIN = 1.0.59
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
 @@ -70,8 +70,8 @@
