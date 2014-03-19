@@ -11,18 +11,20 @@ Summary(pl.UTF-8):	Biblioteka PNG
 Summary(pt_BR.UTF-8):	Biblioteca PNG
 Summary(tr.UTF-8):	PNG kitaplığı
 Name:		libpng1
-Version:	1.0.60
+Version:	1.0.61
 Release:	1
 Epoch:		2
 License:	distributable
 Group:		Libraries
-Source0:	http://downloads.sourceforge.net/libpng/libpng-%{version}.tar.bz2
-# Source0-md5:	c5aac9072eaad7ea8faab75b98f2f34b
+Source0:	http://downloads.sourceforge.net/libpng/libpng-%{version}.tar.xz
+# Source0-md5:	5b169ae943409f15de4647cd5a4783c5
 Patch0:		%{name}-opt.patch
 Patch1:		%{name}-pngminus.patch
 Patch2:		%{name}-SONAME.patch
 URL:		http://www.libpng.org/pub/png/libpng.html
 BuildRequires:	rpmbuild(macros) >= 1.213
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 BuildRequires:	zlib-devel
 Provides:	libpng = %{version}
 %ifarch %{x8664} ia64 ppc64 s390x sparc64
