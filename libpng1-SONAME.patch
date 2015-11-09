@@ -1,5 +1,5 @@
---- libpng-1.0.61/scripts/makefile.linux.orig	2012-04-25 19:27:07.640508188 +0200
-+++ libpng-1.0.61/scripts/makefile.linux	2012-04-25 19:27:36.627174251 +0200
+--- libpng-1.0.63/scripts/makefile.linux.orig	2012-04-25 19:27:07.640508188 +0200
++++ libpng-1.0.63/scripts/makefile.linux	2012-04-25 19:27:36.627174251 +0200
 @@ -8,8 +8,8 @@
  # and license in png.h
  
@@ -8,7 +8,7 @@
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.62
+ PNGMIN = 1.0.63
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
 @@ -54,7 +54,7 @@
@@ -112,8 +112,8 @@
  
  install: install-static install-shared install-man install-config
  
---- libpng-1.0.61/scripts/makefile.gcmmx.orig	2008-03-15 15:25:16.211287745 +0100
-+++ libpng-1.0.61/scripts/makefile.gcmmx	2008-03-15 15:25:55.143148910 +0100
+--- libpng-1.0.63/scripts/makefile.gcmmx.orig	2008-03-15 15:25:16.211287745 +0100
++++ libpng-1.0.63/scripts/makefile.gcmmx	2008-03-15 15:25:55.143148910 +0100
 @@ -12,8 +12,8 @@
  #        the background!  Context switches between MMX and FPU are expensive.
  
@@ -122,7 +122,7 @@
 -PNGMAJ = 0
 +LIBNAME = libpng
 +PNGMAJ = 2
- PNGMIN = 1.0.62
+ PNGMIN = 1.0.63
  PNGVER = $(PNGMAJ).$(PNGMIN)
  
 @@ -70,8 +70,8 @@
